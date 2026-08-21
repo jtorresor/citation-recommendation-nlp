@@ -30,7 +30,7 @@ El dataset se construye a partir del corpus arXiv y se versiona con **DVC**, en 
 ## Instalación
 
 ```bash
-git clone https://github.com/<usuario-o-equipo>/<nombre-del-repositorio>.git
+git clone https://github.com/jtorresor/citation-recommendation-nlp.git
 cd <nombre-del-repositorio>
 python3 -m venv .venv
 source .venv/bin/activate
