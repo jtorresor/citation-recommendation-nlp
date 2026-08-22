@@ -1,0 +1,31 @@
+# Creds & secret
+.env
+.env.local
+client_secret*.json
+*service_account*.json
+gdrive_creds/
+
+# Virtual envs (uv)
+.venv/
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+dist/
+build/
+.eggs/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# macOS
+.DS_Store
+
+# MLflow
+mlruns/
+*.log
+
+# Editores
+.vscode/
+.idea/
