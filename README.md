@@ -81,15 +81,32 @@ dashboard/    Tablero de visualización y su Dockerfile
 docs/         Regla de mapeo de etiquetas y documentación
 ```
 
-## Instalación
+## Configuración y Descarga de Datos
+
+> [!WARNING]
+> **Requisitos previos para colaboradores:**
+> 1. Tener acceso a la carpeta de Google Drive `microproject-nlp` (solicitar al administrador).
+> 2. Estar añadido como **Usuario de prueba** en la Pantalla de consentimiento OAuth de Google Cloud del proyecto.
+> 3. Disponer del `GDRIVE_CLIENT_ID` y `GDRIVE_CLIENT_SECRET` (se comparten internamente de forma segura, nunca por Git).
+
+**Instalación:**
 
 ```bash
+# 1. Clonar el repositorio
 git clone https://github.com/jtorresor/citation-recommendation-nlp.git
 cd citation-recommendation-nlp
-python3 -m venv .venv
-source .venv/bin/activate
-pip install -r requirements.txt
-dvc pull
+
+# 2. Instalar dependencias usando uv
+uv sync
+
+# 3. Configurar las credenciales de la app de Google Cloud
+#    (Esto se guarda localmente y es ignorado por Git)
+uv run dvc remote modify --local gdrive gdrive_client_id     <EL_CLIENT_ID>
+uv run dvc remote modify --local gdrive gdrive_client_secret <EL_CLIENT_SECRET>
+
+# 4. Descargar los datos desde Google Drive
+#    (Abre el navegador: debes iniciar sesión con tu cuenta personal de Gmail)
+uv run dvc pull
 ```
 
 ## Equipo
