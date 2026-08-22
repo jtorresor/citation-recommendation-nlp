@@ -29,3 +29,4 @@ mlruns/
 # Editores
 .vscode/
 .idea/
+/data
