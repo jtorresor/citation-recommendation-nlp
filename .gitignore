@@ -30,4 +30,4 @@ mlruns/
 .vscode/
 .idea/
 /data
-*.csv
+*.csv*:Zone.Identifier
