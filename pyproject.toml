@@ -2,12 +2,23 @@
 name = "microproject-nlp"
 version = "0.1.0"
 description = "Add your description here"
-requires-python = ">=3.14"
+requires-python = ">=3.12,<3.13"
 dependencies = [
     "dvc>=3.67.1",
     "dvc-gdrive>=3.0.1",
     "numpy>=2.0",
     "pandas>=2.2",
     "matplotlib>=3.9",
+    "jupyter>=1.1.1",
+    "pyarrow>=25.0.1",
+    "scikit-learn>=1.9.0",
+    "mlflow>=3.15.2",
+    "joblib>=1.6.0",
+]
+
+[dependency-groups]
+dev = [
+    "dvc[gdrive]>=3.67.1",
+    "ipykernel>=7.3.0",
     "jupyter>=1.1.1",
 ]
