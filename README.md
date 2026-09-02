@@ -3,6 +3,34 @@
 **Proyecto de Desarrollo de Soluciones — Micro-proyecto**
 Maestría en Inteligencia Artificial · Universidad de los Andes
 
+# IntenCite - Citation Function Classification
+
+Proyecto académico para la clasificación automática de la función semántica de citas en artículos científicos.
+
+El sistema clasifica cada contexto de cita en una de cinco categorías:
+
+- Background
+- Gap
+- Application
+- Improvement
+- Comparison
+
+El proyecto emplea Git para versionamiento de código, `uv` para administración reproducible del entorno Python, DVC para versionamiento de datos y MLflow para seguimiento y comparación de experimentos.
+
+---
+
+## Requisitos
+
+- Git
+- Python 3.12
+- uv
+- Acceso al remoto DVC del proyecto
+
+La versión de Python utilizada por el proyecto está definida en:
+
+```text
+.python-version
+
 ## Descripción
 
 Cuando un investigador revisa la literatura, no le basta saber que una fuente fue citada:

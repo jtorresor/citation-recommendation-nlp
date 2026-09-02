@@ -31,3 +31,8 @@ mlruns/
 .idea/
 /data
 *.csv*:Zone.Identifier
+
+#Cache basura
+notebooks/__pycache__/
+notebooks/data_cache/
+notebooks/eda_out/
