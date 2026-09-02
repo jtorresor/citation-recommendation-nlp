@@ -1838,7 +1838,7 @@ wheels = [
 [[package]]
 name = "microproject-nlp"
 version = "0.1.0"
-source = { virtual = "." }
+source = { editable = "." }
 dependencies = [
     { name = "dvc" },
     { name = "dvc-gdrive" },
