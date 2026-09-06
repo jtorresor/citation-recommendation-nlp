@@ -1842,6 +1842,7 @@ source = { editable = "." }
 dependencies = [
     { name = "dvc" },
     { name = "dvc-gdrive" },
+    { name = "fastapi" },
     { name = "joblib" },
     { name = "jupyter" },
     { name = "matplotlib" },
@@ -1850,6 +1851,7 @@ dependencies = [
     { name = "pandas" },
     { name = "pyarrow" },
     { name = "scikit-learn" },
+    { name = "uvicorn" },
 ]
 
 [package.dev-dependencies]
@@ -1863,6 +1865,7 @@ dev = [
 requires-dist = [
     { name = "dvc", specifier = ">=3.67.1" },
     { name = "dvc-gdrive", specifier = ">=3.0.1" },
+    { name = "fastapi", specifier = ">=0.141.1" },
     { name = "joblib", specifier = ">=1.6.0" },
     { name = "jupyter", specifier = ">=1.1.1" },
     { name = "matplotlib", specifier = ">=3.9" },
@@ -1871,6 +1874,7 @@ requires-dist = [
     { name = "pandas", specifier = ">=2.2" },
     { name = "pyarrow", specifier = ">=25.0.1" },
     { name = "scikit-learn", specifier = ">=1.9.0" },
+    { name = "uvicorn", specifier = ">=0.52.4" },
 ]
 
 [package.metadata.requires-dev]
