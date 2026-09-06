@@ -30,7 +30,7 @@ services:
   mlflow:
     image: ${MLFLOW_IMAGE:-mlflow-server:local}
     build:
-      context: ./mlflow
+      context: ./infra/mlflow-server/
       args:
         MLFLOW_VERSION: ${MLFLOW_VERSION:-3.16.0}
     container_name: mlflow-server
