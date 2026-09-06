@@ -50,6 +50,22 @@ fi
 # Permite sobrescribir por completo la lista si lo necesitas (p. ej. un dominio).
 ALLOWED_HOSTS="${MLFLOW_ALLOWED_HOSTS_OVERRIDE:-${ALLOWED_HOSTS}}"
 
+# ---------------------------------------------------------------------------
+# 2b. Origenes CORS permitidos
+#     El navegador manda header 'Origin' tambien en peticiones POST del MISMO
+#     origen. MLflow bloquea con 403 "Cross-origin request blocked" cualquier
+#     POST con Origin que no sea localhost, salvo que se declare aqui. Sin esto
+#     la UI servida en una IP publica no puede buscar, borrar ni renombrar runs.
+#     No afecta a los clientes Python (Colab): no envian header Origin.
+#     Ojo: el puerto del Origin es el PUBLICADO en el host, no el interno.
+# ---------------------------------------------------------------------------
+MLFLOW_PUBLIC_PORT="${MLFLOW_PUBLIC_PORT:-${MLFLOW_PORT}}"
+CORS_ORIGINS="http://localhost:${MLFLOW_PUBLIC_PORT},http://127.0.0.1:${MLFLOW_PUBLIC_PORT}"
+if [ -n "${MLFLOW_PUBLIC_HOST}" ]; then
+    CORS_ORIGINS="${CORS_ORIGINS},http://${MLFLOW_PUBLIC_HOST}:${MLFLOW_PUBLIC_PORT},http://${MLFLOW_PUBLIC_HOST}"
+fi
+CORS_ORIGINS="${MLFLOW_CORS_ORIGINS_OVERRIDE:-${CORS_ORIGINS}}"
+
 SERVER_ARGS=(
     server
     --host 0.0.0.0
@@ -60,6 +76,7 @@ SERVER_ARGS=(
     --artifacts-destination "${ARTIFACTS_DESTINATION}"
     --default-artifact-root "mlflow-artifacts:/"
     --allowed-hosts "${ALLOWED_HOSTS}"
+    --cors-allowed-origins "${CORS_ORIGINS}"
 )
 
 # ---------------------------------------------------------------------------
@@ -86,6 +103,7 @@ else
 fi
 
 echo "[entrypoint] allowed-hosts = ${ALLOWED_HOSTS}"
+echo "[entrypoint] cors-origins  = ${CORS_ORIGINS}"
 echo "[entrypoint] artifacts     = ${ARTIFACTS_DESTINATION}"
 echo "[entrypoint] Arrancando MLflow en 0.0.0.0:${MLFLOW_PORT}"
 

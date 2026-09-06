@@ -28,9 +28,9 @@ services:
   # Servidor de tracking (UI + REST API + proxy de artefactos).
   # -------------------------------------------------------------------------
   mlflow:
-    image: ${MLFLOW_IMAGE:-mlflow-server:latest}
+    image: ${MLFLOW_IMAGE:-mlflow-server:local}
     build:
-      context: ./infra/mlflow-server
+      context: ./mlflow
       args:
         MLFLOW_VERSION: ${MLFLOW_VERSION:-3.16.0}
     container_name: mlflow-server
@@ -46,6 +46,9 @@ services:
       # IP elastica o DNS publico de la EC2. Obligatorio: sin esto MLflow 3.x
       # rechaza las peticiones que llegan desde Colab con la IP publica.
       MLFLOW_PUBLIC_HOST: ${MLFLOW_PUBLIC_HOST:?Define MLFLOW_PUBLIC_HOST en .env}
+      # Puerto publicado en el host: el navegador lo usa en el header Origin,
+      # asi que el contenedor necesita conocerlo para autorizar CORS.
+      MLFLOW_PUBLIC_PORT: ${MLFLOW_HOST_PORT:-8080}
       MLFLOW_AUTH_ENABLED: ${MLFLOW_AUTH_ENABLED:-false}
       MLFLOW_AUTH_USERNAME: ${MLFLOW_AUTH_USERNAME:-admin}
       MLFLOW_AUTH_PASSWORD: ${MLFLOW_AUTH_PASSWORD:-}
