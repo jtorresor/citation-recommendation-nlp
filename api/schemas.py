@@ -1,6 +1,6 @@
 from typing import Literal
 
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, Field, field_validator
 
 CitationLabel = Literal[
     "Application",
@@ -14,9 +14,25 @@ CitationLabel = Literal[
 class CitationInput(BaseModel):
     context: str = Field(
         ...,
-        min_length=1,
-        description="Citation context to classify",
+        min_length=20,
+        max_length=5000,
+        description="Citation context text to classify. Must be between 20 and 5000 characters. Minimum 3 words.",
     )
+
+    model: str = Field(
+        default="tfidf-logreg-baseline-v1",
+        description="Model to use for prediction",
+    )
+
+    @field_validator("context")
+    @classmethod
+    def validate_context(cls, value: str) -> str:
+        value = value.strip()
+
+        if len(value.split()) < 3:
+            raise ValueError("Citation context must contain at least three words")
+
+        return value
 
 
 class ClassProbabilities(BaseModel):
@@ -28,5 +44,7 @@ class ClassProbabilities(BaseModel):
 
 
 class PredictionResponse(BaseModel):
+    model: str
     prediction: CitationLabel
+    confidence: float
     probabilities: ClassProbabilities

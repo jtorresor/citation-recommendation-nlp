@@ -2000,10 +2000,12 @@ dependencies = [
     { name = "datasets" },
     { name = "dvc" },
     { name = "dvc-gdrive" },
+    { name = "fastapi" },
     { name = "joblib" },
     { name = "jupyter" },
     { name = "matplotlib" },
     { name = "mlflow" },
+    { name = "ninja2" },
     { name = "numpy" },
     { name = "pandas" },
     { name = "peft" },
@@ -2011,6 +2013,7 @@ dependencies = [
     { name = "scikit-learn" },
     { name = "torch" },
     { name = "transformers" },
+    { name = "uvicorn" },
 ]
 
 [package.dev-dependencies]
@@ -2025,10 +2028,12 @@ requires-dist = [
     { name = "datasets", specifier = ">=5.0.1" },
     { name = "dvc", specifier = ">=3.67.1" },
     { name = "dvc-gdrive", specifier = ">=3.0.1" },
+    { name = "fastapi", specifier = ">=0.141.1" },
     { name = "joblib", specifier = ">=1.6.0" },
     { name = "jupyter", specifier = ">=1.1.1" },
     { name = "matplotlib", specifier = ">=3.9" },
     { name = "mlflow", specifier = ">=3.15.2" },
+    { name = "ninja2", specifier = ">=0.1" },
     { name = "numpy", specifier = ">=2.0" },
     { name = "pandas", specifier = ">=2.2" },
     { name = "peft", specifier = ">=0.20.0" },
@@ -2036,6 +2041,7 @@ requires-dist = [
     { name = "scikit-learn", specifier = ">=1.9.0" },
     { name = "torch", specifier = ">=2.14.0" },
     { name = "transformers", specifier = ">=5.16.1" },
+    { name = "uvicorn", specifier = ">=0.52.4" },
 ]
 
 [package.metadata.requires-dev]
@@ -2267,6 +2273,15 @@ sdist = { url = "https://files.pythonhosted.org/packages/6a/51/63fe664f3908c97be
 wheels = [
     { url = "https://files.pythonhosted.org/packages/9e/c9/b2622292ea83fbb4ec318f5b9ab867d0a28ab43c5717bb85b0a5f6b3b0a4/networkx-3.6.1-py3-none-any.whl", hash = "sha256:d47fbf302e7d9cbbb9e2555a0d267983d2aa476bac30e90dfbe5669bd57f3762", size = 2068504, upload-time = "2025-12-08T17:02:38.159Z" },
 ]
+
+[[package]]
+name = "ninja2"
+version = "0.1"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "jinja2" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/e0/ed/975418d4657a3f977c4bf3af1858873fb602d55e6e83e5894d108d1a9e13/ninja2-0.1.tar.gz", hash = "sha256:ffa877f11609273500c7b252d9998f9591664f70bd791d9bb233e44006caa76c", size = 2071, upload-time = "2015-01-10T10:37:13.506Z" }
 
 [[package]]
 name = "notebook"

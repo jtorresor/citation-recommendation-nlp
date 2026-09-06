@@ -18,6 +18,9 @@ dependencies = [
     "torch>=2.14.0",
     "peft>=0.20.0",
     "datasets>=5.0.1",
+    "fastapi>=0.141.1",
+    "uvicorn>=0.52.4",
+    "ninja2>=0.1",
 ]
 
 [dependency-groups]
