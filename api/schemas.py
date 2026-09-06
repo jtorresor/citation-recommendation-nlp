@@ -19,6 +19,11 @@ class CitationInput(BaseModel):
         description="Citation context text to classify. Must be between 20 and 5000 characters. Minimum 3 words.",
     )
 
+    model: str = Field(
+        default="tfidf-logreg-baseline-v1",
+        description="Model to use for prediction",
+    )
+
     @field_validator("context")
     @classmethod
     def validate_context(cls, value: str) -> str:
@@ -39,6 +44,7 @@ class ClassProbabilities(BaseModel):
 
 
 class PredictionResponse(BaseModel):
+    model: str
     prediction: CitationLabel
     confidence: float
     probabilities: ClassProbabilities

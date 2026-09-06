@@ -15,3 +15,15 @@ router = APIRouter(
 )
 def predict(input_data: CitationInput):
     return predict_citation(input_data.context)
+
+
+@router.get("/models")
+def available_models():
+    return {
+        "models": [
+            {
+                "id": "tfidf-logreg-baseline-v1",
+                "name": "TF-IDF + Logistic Regression",
+            }
+        ]
+    }
