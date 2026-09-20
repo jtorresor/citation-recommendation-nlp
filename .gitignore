@@ -39,3 +39,7 @@ notebooks/eda_out/
 
 mlartifacts/
 *.db
+
+.terraform/
+*.tfstate
+*.tfstate.*
