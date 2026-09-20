@@ -1,0 +1,18 @@
+services:
+  api:
+    build:
+      context: .
+      dockerfile: api/Dockerfile
+    container_name: intencite-api
+    ports:
+      - "8001:8001"
+
+  app:
+    build:
+      context: ./app
+      dockerfile: Dockerfile
+    container_name: intencite-app
+    ports:
+      - "8080:80"
+    depends_on:
+      - api
