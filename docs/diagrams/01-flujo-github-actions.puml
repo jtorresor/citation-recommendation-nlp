@@ -1,0 +1,64 @@
+@startuml
+title Ciclo de vida del despliegue de IntenCite
+
+top to bottom direction
+
+skinparam backgroundColor #FFFFFF
+skinparam shadowing false
+skinparam defaultFontName Arial
+skinparam ArrowColor #2563EB
+skinparam ArrowThickness 2
+skinparam state {
+    BackgroundColor #F8FAFC
+    BorderColor #2563EB
+    FontColor #0F172A
+    StartColor #16A34A
+    EndColor #DC2626
+}
+
+state "1. Credenciales temporales\nAWS Academy" as Credentials
+state "2. GitHub Actions\nDeploy IntenCite" as Deploy
+state "3. Inicialización de Terraform\nState remoto en Amazon S3" as State
+state "4. Construcción y publicación\nAPI + App en Amazon ECR" as Images
+state "5. Terraform apply\nCreación de infraestructura" as Apply
+state "6. IntenCite disponible\nmediante la URL del ALB" as Running
+state "7. GitHub Actions\nDestroy IntenCite" as Destroy
+state "8. Terraform destroy\nEliminación de recursos y state" as Cleanup
+
+[*] --> Credentials
+
+Credentials --> Deploy : workflow_dispatch
+
+Deploy --> State : STS obtiene Account ID
+State --> Images : Backend inicializado
+Images --> Apply : Imágenes publicadas
+
+Apply --> Running : ALB + ECS/Fargate\nECR + CloudWatch
+
+Running --> Destroy : Cuando finaliza el uso
+Destroy --> Cleanup : Recupera el mismo state
+Cleanup --> [*] : Cuenta limpia
+
+note right of Credentials
+GitHub Actions Secrets:
+
+AWS_ACCESS_KEY_ID
+AWS_SECRET_ACCESS_KEY
+AWS_SESSION_TOKEN
+end note
+
+note right of State
+Bucket dinámico:
+
+intencite-tfstate-<ACCOUNT_ID>
+end note
+
+note right of Running
+Rutas principales:
+
+/          → App
+/api/*     → API
+/health    → API
+end note
+
+@enduml
