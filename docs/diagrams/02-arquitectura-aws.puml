@@ -1,0 +1,68 @@
+@startuml
+title Arquitectura desplegada de IntenCite en AWS
+
+skinparam backgroundColor transparent
+skinparam shadowing false
+skinparam defaultFontName Arial
+skinparam componentStyle rectangle
+skinparam linetype ortho
+skinparam nodesep 45
+skinparam ranksep 45
+
+actor "Usuario" as User
+component "GitHub Actions" as Actions
+
+cloud "AWS Academy — us-east-1" as AWS {
+
+    database "S3\nTerraform State" as State
+
+    node "Amazon ECR" as ECR {
+        artifact "intencite-app\nNginx image" as AppImage
+        artifact "intencite-api\nFastAPI image" as ApiImage
+    }
+
+    rectangle "VPC" as VPC {
+
+        node "Application Load Balancer\nHTTP :80" as ALB
+
+        rectangle "Target Group App" as AppTG
+        rectangle "Target Group API" as ApiTG
+
+        node "ECS Cluster\nintencite-cluster" as ECS {
+
+            node "Fargate Task\nintencite-app" as AppTask {
+                component "Nginx\nPuerto 80" as Nginx
+            }
+
+            node "Fargate Task\nintencite-api" as ApiTask {
+                component "FastAPI + Uvicorn\nPuerto 8001" as FastAPI
+                artifact "TF-IDF + Logistic Regression\njoblib model" as Model
+            }
+        }
+    }
+
+    database "CloudWatch Logs" as Logs
+}
+
+User --> ALB : HTTP
+
+ALB --> AppTG : /
+AppTG --> Nginx : Puerto 80
+
+ALB --> ApiTG : /api/*\n/health
+ApiTG --> FastAPI : Puerto 8001
+
+FastAPI --> Model : Carga y predicción
+
+AppImage ..> AppTask : Imagen Docker
+ApiImage ..> ApiTask : Imagen Docker
+
+AppTask --> Logs : Logs
+ApiTask --> Logs : Logs
+
+Actions ..> State : Backend Terraform
+Actions ..> ECR : Push de imágenes
+Actions ..> ALB : Terraform apply
+Actions ..> ECS : Terraform apply
+
+@enduml
