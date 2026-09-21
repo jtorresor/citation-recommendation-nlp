@@ -111,6 +111,12 @@ jobs:
         working-directory: ${{ env.TF_DIR }}
         run: |
           ALB_DNS=$(terraform output -raw alb_dns_name)
+          APP_URL="http://${ALB_DNS}"
 
           echo "IntenCite deployed successfully"
-          echo "http://${ALB_DNS}"
+          echo "$APP_URL"
+
+          echo "## 🚀 IntenCite deployed" >> "$GITHUB_STEP_SUMMARY"
+          echo "" >> "$GITHUB_STEP_SUMMARY"
+          echo "### Application URL" >> "$GITHUB_STEP_SUMMARY"
+          echo "[$APP_URL]($APP_URL)" >> "$GITHUB_STEP_SUMMARY"
