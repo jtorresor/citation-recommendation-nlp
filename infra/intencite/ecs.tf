@@ -21,7 +21,7 @@ resource "aws_ecs_task_definition" "api" {
   requires_compatibilities = ["FARGATE"]
   network_mode             = "awsvpc"
 
-  cpu    = "4096"
+  cpu    = "2048"
   memory = "16384"
 
   execution_role_arn = data.aws_iam_role.lab_role.arn
