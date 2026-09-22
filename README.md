@@ -128,9 +128,9 @@ Durante el proyecto se evaluaron diferentes estrategias de clasificación.
 | Modelo | Contexto | Accuracy validación | F1 macro validación |
 |---|---|---:|---:|
 | TF-IDF + Logistic Regression | Contexto preparado | 0.5135 | 0.5125 |
-| SciBERT fine-tuning | Una oración | 0.6604 | 0.6492 |
-| SciBERT frozen encoder | 3 contextos | 0.5817 | 0.5826 |
-| Qwen2.5 1.5B + LoRA | 3 contextos | **0.6874** | **0.6863** |
+| SciBERT fine-tuning | Una oración | 0.6563 | 0.6455 |
+| SciBERT frozen encoder | 3 contextos | 0.5300 | 0.5304 |
+| Qwen2.5 1.5B + LoRA | 3 contextos | **0.6832** | **0.6822** |
 
 Los resultados muestran que aumentar la cantidad de contexto no garantiza automáticamente un mejor desempeño.
 
