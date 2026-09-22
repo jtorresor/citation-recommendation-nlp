@@ -22,7 +22,7 @@ def predict_citation(context: str) -> dict:
     }
 
     return {
-        "model": "tfidf_logreg_baseline_v1",
+        "model": "tfidf-logreg-baseline-v1",
         "prediction": prediction,
         "confidence": max(probability_dict.values()),
         "probabilities": probability_dict,
