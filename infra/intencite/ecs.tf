@@ -22,7 +22,7 @@ resource "aws_ecs_task_definition" "api" {
   network_mode             = "awsvpc"
 
   cpu    = "2048"
-  memory = "16384"
+  memory = "8192"
 
   execution_role_arn = data.aws_iam_role.lab_role.arn
 
