@@ -1,4 +1,4 @@
-@startuml
+@startuml 01-flujo-github-actions
 title Ciclo de vida del despliegue de IntenCite
 
 top to bottom direction

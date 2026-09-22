@@ -1,4 +1,4 @@
-@startuml
+@startuml 02-arquitectura-aws
 title Arquitectura desplegada de IntenCite en AWS
 
 skinparam backgroundColor transparent

@@ -1,4 +1,4 @@
-@startuml
+@startuml 03-arquitectura-local
 title Arquitectura local de IntenCite
 
 skinparam backgroundColor transparent
