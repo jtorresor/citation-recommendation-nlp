@@ -1,4 +1,4 @@
-@startuml
+@startuml 01-flujo-github-actions
 title Ciclo de vida del despliegue de IntenCite
 
 top to bottom direction
@@ -18,26 +18,31 @@ skinparam state {
 
 state "1. Credenciales temporales\nAWS Academy" as Credentials
 state "2. GitHub Actions\nDeploy IntenCite" as Deploy
-state "3. Inicialización de Terraform\nState remoto en Amazon S3" as State
-state "4. Construcción y publicación\nAPI + App en Amazon ECR" as Images
-state "5. Terraform apply\nCreación de infraestructura" as Apply
-state "6. IntenCite disponible\nmediante la URL del ALB" as Running
-state "7. GitHub Actions\nDestroy IntenCite" as Destroy
-state "8. Terraform destroy\nEliminación de recursos y state" as Cleanup
+state "3. Terraform init\nState remoto en Amazon S3" as State
+state "4. Construcción de imágenes\nAPI + App" as Build
+state "5. Publicación de imágenes\nAmazon ECR" as Images
+state "6. Terraform apply\nInfraestructura AWS" as Apply
+state "7. Nuevo deployment ECS\nEspera de servicios estables" as Stabilize
+state "8. IntenCite disponible\nURL del ALB" as Running
+state "9. GitHub Actions\nDestroy IntenCite" as Destroy
+state "10. Terraform destroy\nEliminación de infraestructura" as Cleanup
+state "11. Eliminación del bucket\nde Terraform State" as StateCleanup
 
 [*] --> Credentials
 
 Credentials --> Deploy : workflow_dispatch
 
-Deploy --> State : STS obtiene Account ID
-State --> Images : Backend inicializado
+Deploy --> State : AWS STS obtiene Account ID
+State --> Build : Backend inicializado
+Build --> Images : Docker build
 Images --> Apply : Imágenes publicadas
-
-Apply --> Running : ALB + ECS/Fargate\nECR + CloudWatch
+Apply --> Stabilize : ECS + ALB + red + logs
+Stabilize --> Running : Servicios estables
 
 Running --> Destroy : Cuando finaliza el uso
 Destroy --> Cleanup : Recupera el mismo state
-Cleanup --> [*] : Cuenta limpia
+Cleanup --> StateCleanup : Recursos eliminados
+StateCleanup --> [*] : Cuenta limpia
 
 note right of Credentials
 GitHub Actions Secrets:
@@ -51,14 +56,30 @@ note right of State
 Bucket dinámico:
 
 intencite-tfstate-<ACCOUNT_ID>
+
+Key:
+intencite/terraform.tfstate
+end note
+
+note right of Build
+API Docker image:
+
+FastAPI
+PyTorch CPU
+Qwen2.5-1.5B-Instruct
+LoRA adapter
+TF-IDF baseline
+
+El modelo Qwen queda
+empaquetado en la imagen.
 end note
 
 note right of Running
-Rutas principales:
+Rutas del ALB:
 
-/          → App
-/api/*     → API
-/health    → API
+/          -> App
+/api/*     -> API
+/health    -> API
 end note
 
 @enduml

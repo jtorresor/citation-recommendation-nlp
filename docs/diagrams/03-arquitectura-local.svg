@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentScriptType="application/ecmascript" contentStyleType="text/css" height="650px" preserveAspectRatio="none" style="width:1216px;height:650px;" version="1.1" viewBox="0 0 1216 650" width="1216px" zoomAndPan="magnify"><defs/><g><text fill="#000000" font-family="Arial" font-size="18" lengthAdjust="spacingAndGlyphs" textLength="272" x="475" y="16.708">Arquitectura local de IntenCite</text><!--MD5=[42591781c74864aa6bd8b9830e23a81c]
+cluster Docker--><rect fill="#FFFFFF" height="477" style="stroke: #000000; stroke-width: 1.5;" width="686" x="280" y="162.9531"/><text fill="#000000" font-family="Arial" font-size="14" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="135" x="555.5" y="177.9482">Docker Compose</text><text fill="#000000" font-family="Arial" font-size="14" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="71" x="587.5" y="194.2451">IntenCite</text><!--MD5=[975d7fda8cf98ff1a26ca528bf10cecf]
+cluster App--><polygon fill="#FFFFFF" points="762,357.9531,772,347.9531,942,347.9531,942,462.9531,932,472.9531,762,472.9531,762,357.9531" style="stroke: #000000; stroke-width: 1.5;"/><line style="stroke: #000000; stroke-width: 1.5;" x1="932" x2="941" y1="357.9531" y2="348.9531"/><line style="stroke: #000000; stroke-width: 1.5;" x1="762" x2="932" y1="357.9531" y2="357.9531"/><line style="stroke: #000000; stroke-width: 1.5;" x1="932" x2="932" y1="357.9531" y2="472.9531"/><text fill="#000000" font-family="Arial" font-size="14" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="104" x="796" y="373.9482">intencite-app</text><!--MD5=[7058f338f099d236033fc5161613b206]
+cluster Api--><polygon fill="#FFFFFF" points="304,365.9531,314,355.9531,738,355.9531,738,605.9531,728,615.9531,304,615.9531,304,365.9531" style="stroke: #000000; stroke-width: 1.5;"/><line style="stroke: #000000; stroke-width: 1.5;" x1="728" x2="737" y1="365.9531" y2="356.9531"/><line style="stroke: #000000; stroke-width: 1.5;" x1="304" x2="728" y1="365.9531" y2="365.9531"/><line style="stroke: #000000; stroke-width: 1.5;" x1="728" x2="728" y1="365.9531" y2="615.9531"/><text fill="#000000" font-family="Arial" font-size="14" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="98" x="468" y="381.9482">intencite-api</text><!--MD5=[49cbbb1648246ecd0e2d56eda0c19f08]
+entity Gateway--><polygon fill="#FEFECE" points="343,223.9531,353,213.9531,505,213.9531,505,266.5469,495,276.5469,343,276.5469,343,223.9531" style="stroke: #000000; stroke-width: 1.5;"/><line style="stroke: #000000; stroke-width: 1.5;" x1="495" x2="504" y1="223.9531" y2="214.9531"/><line style="stroke: #000000; stroke-width: 1.5;" x1="343" x2="495" y1="223.9531" y2="223.9531"/><line style="stroke: #000000; stroke-width: 1.5;" x1="495" x2="495" y1="223.9531" y2="276.5469"/><text fill="#000000" font-family="Arial" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="122" x="358" y="246.9482">intencite-gateway</text><text fill="#000000" font-family="Arial" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="83" x="358" y="263.2451">Nginx :8080</text><!--MD5=[b7709df717efd9e6df0e9843c5de81db]
+entity Nginx--><rect fill="#FEFECE" height="68.8906" style="stroke: #A80036; stroke-width: 1.5;" width="142" x="781" y="387.9531"/><rect fill="#FEFECE" height="5" style="stroke: #A80036; stroke-width: 1.5;" width="10" x="776" y="392.9531"/><rect fill="#FEFECE" height="5" style="stroke: #A80036; stroke-width: 1.5;" width="10" x="776" y="446.8438"/><text fill="#000000" font-family="Arial" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="38" x="791" y="410.9482">Nginx</text><text fill="#000000" font-family="Arial" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="122" x="791" y="427.2451">Frontend estático</text><text fill="#000000" font-family="Arial" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="68" x="791" y="443.542">Puerto 80</text><!--MD5=[25f479febf12fc81d89295293d115bd2]
+entity FastAPI--><rect fill="#FEFECE" height="52.5938" style="stroke: #A80036; stroke-width: 1.5;" width="141" x="428.5" y="395.9531"/><rect fill="#FEFECE" height="5" style="stroke: #A80036; stroke-width: 1.5;" width="10" x="423.5" y="400.9531"/><rect fill="#FEFECE" height="5" style="stroke: #A80036; stroke-width: 1.5;" width="10" x="423.5" y="438.5469"/><text fill="#000000" font-family="Arial" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="121" x="438.5" y="418.9482">FastAPI + Uvicorn</text><text fill="#000000" font-family="Arial" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="86" x="438.5" y="435.2451">Puerto 8001</text><!--MD5=[987578c08c15afda6d0d69764860ef46]
+entity Baseline--><rect fill="#FEFECE" height="55.5938" style="stroke: #000000; stroke-width: 1.5;" width="165" x="320.5" y="543.9531"/><polygon fill="#FEFECE" points="468.5,548.9531,468.5,562.9531,480.5,562.9531,480.5,554.9531,474.5,548.9531,468.5,548.9531" style="stroke: #000000; stroke-width: 1.5;"/><line style="stroke: #000000; stroke-width: 1.5;" x1="474.5" x2="474.5" y1="548.9531" y2="554.9531"/><line style="stroke: #000000; stroke-width: 1.5;" x1="480.5" x2="474.5" y1="554.9531" y2="554.9531"/><text fill="#000000" font-family="Arial" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="60" x="330.5" y="569.9482">TF-IDF +</text><text fill="#000000" font-family="Arial" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="135" x="330.5" y="586.2451">Logistic Regression</text><!--MD5=[c2add934a11f6ab42f0a1f38b731793a]
+entity Qwen--><rect fill="#FEFECE" height="55.5938" style="stroke: #000000; stroke-width: 1.5;" width="186" x="536" y="543.9531"/><polygon fill="#FEFECE" points="705,548.9531,705,562.9531,717,562.9531,717,554.9531,711,548.9531,705,548.9531" style="stroke: #000000; stroke-width: 1.5;"/><line style="stroke: #000000; stroke-width: 1.5;" x1="711" x2="711" y1="548.9531" y2="554.9531"/><line style="stroke: #000000; stroke-width: 1.5;" x1="717" x2="711" y1="554.9531" y2="554.9531"/><text fill="#000000" font-family="Arial" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="156" x="546" y="569.9482">Qwen2.5-1.5B-Instruct</text><text fill="#000000" font-family="Arial" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="108" x="546" y="586.2451">+ LoRA adapter</text><!--MD5=[fee662a292a0353a69bd162820bae93b]
+entity User--><ellipse cx="524" cy="38.4531" fill="#FEFECE" rx="8" ry="8" style="stroke: #A80036; stroke-width: 1.5;"/><path d="M524,46.4531 L524,73.4531 M511,54.4531 L537,54.4531 M524,73.4531 L511,88.4531 M524,73.4531 L537,88.4531 " fill="none" style="stroke: #A80036; stroke-width: 1.5;"/><text fill="#000000" font-family="Arial" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="52" x="498" y="103.9482">Usuario</text><path d="M6,394.9531 L6,450.3516 L264,450.3516 L264,404.9531 L254,394.9531 L6,394.9531 " fill="#FBFB77" style="stroke: #A80036; stroke-width: 1.0;"/><path d="M254,394.9531 L254,404.9531 L264,404.9531 L254,394.9531 " fill="#FBFB77" style="stroke: #A80036; stroke-width: 1.0;"/><text fill="#000000" font-family="Arial" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="210" x="12" y="412.02">El gateway Nginx local reproduce</text><text fill="#000000" font-family="Arial" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="189" x="12" y="427.1528">el enrutamiento realizado por</text><text fill="#000000" font-family="Arial" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="237" x="12" y="442.2856">el Application Load Balancer en AWS.</text><path d="M982,544.4531 L982,599.8516 L1204,599.8516 L1204,554.4531 L1194,544.4531 L982,544.4531 " fill="#FBFB77" style="stroke: #A80036; stroke-width: 1.0;"/><path d="M1194,544.4531 L1194,554.4531 L1204,554.4531 L1194,544.4531 " fill="#FBFB77" style="stroke: #A80036; stroke-width: 1.0;"/><text fill="#000000" font-family="Arial" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="168" x="988" y="561.52">El frontend tiene la misma</text><text fill="#000000" font-family="Arial" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="201" x="988" y="576.6528">responsabilidad en local y AWS:</text><text fill="#000000" font-family="Arial" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="158" x="988" y="591.7856">servir archivos estáticos.</text><!--MD5=[b61afa64175a2613a4357dafd225d644]
+link User to Gateway--><path d="M501.5,107.3431 C501.5,107.3431 501.5,208.8531 501.5,208.8531 " fill="none" id="User-&gt;Gateway" style="stroke: #A80036; stroke-width: 1.0;"/><polygon fill="#A80036" points="501.5,213.8531,505.5,204.8531,501.5,208.8531,497.5,204.8531,501.5,213.8531" style="stroke: #A80036; stroke-width: 1.0;"/><text fill="#000000" font-family="Arial" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="131" x="443" y="143.02">http://localhost:8080</text><!--MD5=[6b8bfffe03b711510f8a0fef50d42bf6]
+link Gateway to Nginx--><path d="M479.5,277.2431 C479.5,320.3331 479.5,391.9531 479.5,391.9531 C479.5,391.9531 775.62,391.9531 775.62,391.9531 " fill="none" id="Gateway-&gt;Nginx" style="stroke: #A80036; stroke-width: 1.0;"/><polygon fill="#A80036" points="780.62,391.9531,771.62,387.9531,775.62,391.9531,771.62,395.9531,780.62,391.9531" style="stroke: #A80036; stroke-width: 1.0;"/><text fill="#000000" font-family="Arial" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="4" x="532" y="313.02">/</text><text fill="#000000" font-family="Arial" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="116" x="476" y="328.1528">Archivos estáticos</text><!--MD5=[67379072cf6057c793c188cd73a6290e]
+link Gateway to FastAPI--><path d="M454,277.0931 C454,277.0931 454,390.7131 454,390.7131 " fill="none" id="Gateway-&gt;FastAPI" style="stroke: #A80036; stroke-width: 1.0;"/><polygon fill="#A80036" points="454,395.7131,458,386.7131,454,390.7131,450,386.7131,454,395.7131" style="stroke: #A80036; stroke-width: 1.0;"/><text fill="#000000" font-family="Arial" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="34" x="380" y="313.02">/api/*</text><text fill="#000000" font-family="Arial" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="44" x="375" y="328.1528">/health</text><!--MD5=[c5c9674fa61729d213e4c1619a6716cb]
+link User to FastAPI--><path d="M527.5,107.2431 C527.5,107.2431 527.5,390.5531 527.5,390.5531 " fill="none" id="User-&gt;FastAPI" style="stroke: #A80036; stroke-width: 1.0; stroke-dasharray: 7.0,7.0;"/><polygon fill="#A80036" points="527.5,395.5531,531.5,386.5531,527.5,390.5531,523.5,386.5531,527.5,395.5531" style="stroke: #A80036; stroke-width: 1.0;"/><text fill="#000000" font-family="Arial" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="131" x="640" y="242.52">http://localhost:8001</text><text fill="#000000" font-family="Arial" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="161" x="625" y="257.6528">Acceso directo / Swagger</text><!--MD5=[569f4e7096ad54866e9fc416a4236cb9]
+link FastAPI to Baseline--><path d="M457,449.1831 C457,449.1831 457,538.9331 457,538.9331 " fill="none" id="FastAPI-&gt;Baseline" style="stroke: #A80036; stroke-width: 1.0;"/><polygon fill="#A80036" points="457,543.9331,461,534.9331,457,538.9331,453,534.9331,457,543.9331" style="stroke: #A80036; stroke-width: 1.0;"/><text fill="#000000" font-family="Arial" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="109" x="417" y="509.52">Inferencia clásica</text><!--MD5=[d5b78cebeba021792fc22e321c37a59d]
+link FastAPI to Qwen--><path d="M552.75,449.1831 C552.75,449.1831 552.75,538.9331 552.75,538.9331 " fill="none" id="FastAPI-&gt;Qwen" style="stroke: #A80036; stroke-width: 1.0;"/><polygon fill="#A80036" points="552.75,543.9331,556.75,534.9331,552.75,538.9331,548.75,534.9331,552.75,543.9331" style="stroke: #A80036; stroke-width: 1.0;"/><text fill="#000000" font-family="Arial" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="98" x="609" y="502.02">Inferencia LoRA</text><text fill="#000000" font-family="Arial" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="59" x="628.5" y="517.1528">KV cache</text><!--MD5=[9f71cc3e184eaca14caf4def04c2ffd3]
+link Gateway to GMN94--><path d="M385.75,277.1831 C385.75,328.2431 385.75,422.9531 385.75,422.9531 C385.75,422.9531 325.49,422.9531 264.05,422.9531 " fill="none" id="Gateway-GMN94" style="stroke: #A80036; stroke-width: 1.0; stroke-dasharray: 7.0,7.0;"/><!--MD5=[d560871aa3ee31be4f40aec4b88fa4e1]
+link Nginx to GMN97--><path d="M852,457.1231 C852,501.2931 852,571.9531 852,571.9531 C852,571.9531 918.52,571.9531 981.67,571.9531 " fill="none" id="Nginx-GMN97" style="stroke: #A80036; stroke-width: 1.0; stroke-dasharray: 7.0,7.0;"/><!--MD5=[5d5586130a09cbbda8abf950073d663d]
+@startuml
+title Arquitectura local de IntenCite
+
+skinparam backgroundColor transparent
+skinparam shadowing false
+skinparam defaultFontName Arial
+skinparam componentStyle rectangle
+skinparam linetype ortho
+skinparam nodesep 50
+skinparam ranksep 45
+
+actor "Usuario" as User
+
+rectangle "Docker Compose\nIntenCite" as Docker {
+
+    node "intencite-gateway\nNginx :8080" as Gateway
+
+    node "intencite-app" as App {
+        component "Nginx\nFrontend estático\nPuerto 80" as Nginx
+    }
+
+    node "intencite-api" as Api {
+        component "FastAPI + Uvicorn\nPuerto 8001" as FastAPI
+
+        artifact "TF-IDF +\nLogistic Regression" as Baseline
+
+        artifact "Qwen2.5-1.5B-Instruct\n+ LoRA adapter" as Qwen
+    }
+}
+
+User - -> Gateway : http://localhost:8080
+
+Gateway - -> Nginx : /\nArchivos estáticos
+Gateway - -> FastAPI : /api/*\n/health
+
+User ..> FastAPI : http://localhost:8001\nAcceso directo / Swagger
+
+FastAPI - -> Baseline : Inferencia clásica
+FastAPI - -> Qwen : Inferencia LoRA\nKV cache
+
+note bottom of Gateway
+El gateway Nginx local reproduce
+el enrutamiento realizado por
+el Application Load Balancer en AWS.
+end note
+
+note bottom of Nginx
+El frontend tiene la misma
+responsabilidad en local y AWS:
+servir archivos estáticos.
+end note
+
+@enduml
+
+PlantUML version 1.2020.02(Sun Mar 01 05:22:07 COT 2020)
+(GPL source distribution)
+Java Runtime: OpenJDK Runtime Environment
+JVM: OpenJDK 64-Bit Server VM
+Java Version: 21.0.12+8-1-24.04-Ubuntu
+Operating System: Linux
+Default Encoding: UTF-8
+Language: en
+Country: null
+--></g></svg>
