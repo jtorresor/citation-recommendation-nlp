@@ -12,36 +12,39 @@ skinparam ranksep 45
 actor "Usuario" as User
 component "GitHub Actions" as Actions
 
-cloud "AWS Academy — us-east-1" as AWS {
+cloud "AWS Academy - us-east-1" as AWS {
 
-    database "S3\nTerraform State" as State
+    database "Amazon S3\nTerraform State" as State
 
     node "Amazon ECR" as ECR {
         artifact "intencite-app\nNginx image" as AppImage
-        artifact "intencite-api\nFastAPI image" as ApiImage
+        artifact "intencite-api\nFastAPI + modelos" as ApiImage
     }
 
     rectangle "VPC" as VPC {
 
-        node "Application Load Balancer\nHTTP :80" as ALB
+        node "Application Load Balancer\nHTTP :80\nIdle timeout: 120 s" as ALB
 
-        rectangle "Target Group App" as AppTG
-        rectangle "Target Group API" as ApiTG
+        rectangle "Target Group App\nPuerto 80" as AppTG
+        rectangle "Target Group API\nPuerto 8001" as ApiTG
 
         node "ECS Cluster\nintencite-cluster" as ECS {
 
-            node "Fargate Task\nintencite-app" as AppTask {
-                component "Nginx\nPuerto 80" as Nginx
+            node "Fargate Task\nintencite-app\n256 CPU / 512 MiB" as AppTask {
+                component "Nginx\nFrontend estático\nPuerto 80" as Nginx
             }
 
-            node "Fargate Task\nintencite-api" as ApiTask {
+            node "Fargate Task\nintencite-api\n2048 CPU / 8192 MiB" as ApiTask {
                 component "FastAPI + Uvicorn\nPuerto 8001" as FastAPI
-                artifact "TF-IDF + Logistic Regression\njoblib model" as Model
+
+                artifact "TF-IDF +\nLogistic Regression" as Baseline
+
+                artifact "Qwen2.5-1.5B-Instruct\n+ LoRA adapter" as Qwen
             }
         }
     }
 
-    database "CloudWatch Logs" as Logs
+    database "CloudWatch Logs\n/ecs/intencite-app\n/ecs/intencite-api" as Logs
 }
 
 User --> ALB : HTTP
@@ -52,7 +55,8 @@ AppTG --> Nginx : Puerto 80
 ALB --> ApiTG : /api/*\n/health
 ApiTG --> FastAPI : Puerto 8001
 
-FastAPI --> Model : Carga y predicción
+FastAPI --> Baseline : Inferencia clásica
+FastAPI --> Qwen : Inferencia LoRA\nKV cache
 
 AppImage ..> AppTask : Imagen Docker
 ApiImage ..> ApiTask : Imagen Docker
@@ -63,6 +67,22 @@ ApiTask --> Logs : Logs
 Actions ..> State : Backend Terraform
 Actions ..> ECR : Push de imágenes
 Actions ..> ALB : Terraform apply
-Actions ..> ECS : Terraform apply
+Actions ..> ECS : Terraform apply\n+ force deployment
+
+note right of ApiImage
+La imagen de la API incluye
+el modelo base Qwen.
+
+HF_HUB_OFFLINE=1
+TRANSFORMERS_OFFLINE=1
+end note
+
+note bottom of ALB
+El frontend solo sirve
+archivos estáticos.
+
+El ALB realiza el routing
+en el ambiente AWS.
+end note
 
 @enduml

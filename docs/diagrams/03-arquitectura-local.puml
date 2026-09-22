@@ -1,0 +1,53 @@
+@startuml
+title Arquitectura local de IntenCite
+
+skinparam backgroundColor transparent
+skinparam shadowing false
+skinparam defaultFontName Arial
+skinparam componentStyle rectangle
+skinparam linetype ortho
+skinparam nodesep 50
+skinparam ranksep 45
+
+actor "Usuario" as User
+
+rectangle "Docker Compose\nIntenCite" as Docker {
+
+    node "intencite-gateway\nNginx :8080" as Gateway
+
+    node "intencite-app" as App {
+        component "Nginx\nFrontend estático\nPuerto 80" as Nginx
+    }
+
+    node "intencite-api" as Api {
+        component "FastAPI + Uvicorn\nPuerto 8001" as FastAPI
+
+        artifact "TF-IDF +\nLogistic Regression" as Baseline
+
+        artifact "Qwen2.5-1.5B-Instruct\n+ LoRA adapter" as Qwen
+    }
+}
+
+User --> Gateway : http://localhost:8080
+
+Gateway --> Nginx : /\nArchivos estáticos
+Gateway --> FastAPI : /api/*\n/health
+
+User ..> FastAPI : http://localhost:8001\nAcceso directo / Swagger
+
+FastAPI --> Baseline : Inferencia clásica
+FastAPI --> Qwen : Inferencia LoRA\nKV cache
+
+note bottom of Gateway
+El gateway Nginx local reproduce
+el enrutamiento realizado por
+el Application Load Balancer en AWS.
+end note
+
+note bottom of Nginx
+El frontend tiene la misma
+responsabilidad en local y AWS:
+servir archivos estáticos.
+end note
+
+@enduml
